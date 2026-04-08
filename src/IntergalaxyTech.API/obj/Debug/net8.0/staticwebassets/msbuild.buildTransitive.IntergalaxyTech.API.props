@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/IntergalaxyTech.API.props" />
+</Project>

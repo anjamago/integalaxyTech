@@ -1,0 +1,15 @@
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/bin/Debug/net8.0/IntergalaxyTech.Application.deps.json
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/bin/Debug/net8.0/IntergalaxyTech.Application.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/bin/Debug/net8.0/IntergalaxyTech.Application.pdb
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/bin/Debug/net8.0/IntergalaxyTech.Domain.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/bin/Debug/net8.0/IntergalaxyTech.Domain.pdb
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/IntergalaxyTech.Application.csproj.AssemblyReference.cache
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/IntergalaxyTech.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/IntergalaxyTech.Application.AssemblyInfoInputs.cache
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/IntergalaxyTech.Application.AssemblyInfo.cs
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/IntergalaxyTech.Application.csproj.CoreCompileInputs.cache
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/Intergal.3B3505CF.Up2Date
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/IntergalaxyTech.Application.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/refint/IntergalaxyTech.Application.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/IntergalaxyTech.Application.pdb
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/obj/Debug/net8.0/ref/IntergalaxyTech.Application.dll

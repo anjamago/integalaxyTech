@@ -1,0 +1,15 @@
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/bin/Debug/net8.0/IntergalaxyTech.Infrastructure.deps.json
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/bin/Debug/net8.0/IntergalaxyTech.Infrastructure.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/bin/Debug/net8.0/IntergalaxyTech.Infrastructure.pdb
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/bin/Debug/net8.0/IntergalaxyTech.Domain.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/bin/Debug/net8.0/IntergalaxyTech.Domain.pdb
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/IntergalaxyTech.Infrastructure.csproj.AssemblyReference.cache
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/IntergalaxyTech.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/IntergalaxyTech.Infrastructure.AssemblyInfoInputs.cache
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/IntergalaxyTech.Infrastructure.AssemblyInfo.cs
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/IntergalaxyTech.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/Intergal.0A00EB83.Up2Date
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/IntergalaxyTech.Infrastructure.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/refint/IntergalaxyTech.Infrastructure.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/IntergalaxyTech.Infrastructure.pdb
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/ref/IntergalaxyTech.Infrastructure.dll

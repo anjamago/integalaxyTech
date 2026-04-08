@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "wx2eUdWnQ18=",
+  "success": true,
+  "projectFilePath": "/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/IntergalaxyTech.Application.csproj",
+  "expectedPackageFiles": [
+    "/Users/adriancito/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.5/microsoft.extensions.dependencyinjection.abstractions.10.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
