@@ -13,3 +13,5 @@
 /Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/refint/IntergalaxyTech.Infrastructure.dll
 /Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/IntergalaxyTech.Infrastructure.pdb
 /Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/obj/Debug/net8.0/ref/IntergalaxyTech.Infrastructure.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/bin/Debug/net8.0/IntergalaxyTech.Application.dll
+/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Infrastructure/bin/Debug/net8.0/IntergalaxyTech.Application.pdb

@@ -13,6 +13,5 @@ public class Solicitud
     public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
     public DateTime? FechaActualizacion { get; set; }
 
-    // Navigation property
     public Personaje? PersonajeAsignado { get; set; }
 }

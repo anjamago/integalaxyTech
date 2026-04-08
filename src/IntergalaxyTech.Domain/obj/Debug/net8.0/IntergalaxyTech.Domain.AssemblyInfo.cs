@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IntergalaxyTech.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+127c7e770e4013f4e6301e5abe65b8eecc9fae2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("IntergalaxyTech.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IntergalaxyTech.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

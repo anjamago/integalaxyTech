@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "wx2eUdWnQ18=",
+  "dgSpecHash": "aByii20IioU=",
   "success": true,
   "projectFilePath": "/Users/adriancito/Documents/Desarrollo/pruebasTecnicas/IntergalaxyTech/src/IntergalaxyTech.Application/IntergalaxyTech.Application.csproj",
   "expectedPackageFiles": [
+    "/Users/adriancito/.nuget/packages/fluentvalidation/12.1.1/fluentvalidation.12.1.1.nupkg.sha512",
+    "/Users/adriancito/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.1.1/fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
     "/Users/adriancito/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.5/microsoft.extensions.dependencyinjection.abstractions.10.0.5.nupkg.sha512"
   ],
   "logs": []

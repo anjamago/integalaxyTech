@@ -1,27 +1,35 @@
 using IntergalaxyTech.Application;
 using IntergalaxyTech.Infrastructure;
+using IntergalaxyTech.Infrastructure.Health;
+using IntergalaxyTech.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Capas de Arquitectura
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseHealthCheck>("Database");
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<GlobalExceptionMiddleware>();
+
 app.UseHttpsRedirection();
 
-app.MapGet("/", () => "IntergalaxyTech API is running!");
+app.UseAuthorization();
+app.MapControllers();
+app.MapHealthChecks("/health");
 
 app.Run();
