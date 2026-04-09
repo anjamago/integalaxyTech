@@ -17,7 +17,7 @@ public class PersonajeService : IPersonajeService
         _logger = logger;
     }
 
-    public async Task SyncPersonajesAsync()
+    public async Task PersonajesAsync()
     {
         _logger.LogInformation("Iniciando sincronización de personajes desde la API externa.");
         var externalCharacters = await _apiClient.GetCharactersAsync(1);

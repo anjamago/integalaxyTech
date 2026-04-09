@@ -18,7 +18,7 @@ public class PersonajesController : ControllerBase
     [HttpPost("importar")]
     public async Task<ActionResult<ApiResponse<object>>> Importar()
     {
-        await _personajeService.SyncPersonajesAsync();
+        await _personajeService.PersonajesAsync();
         return Ok(ApiResponse<object>.Ok(null, "Sincronización de personajes completada con éxito."));
     }
 

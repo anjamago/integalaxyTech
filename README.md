@@ -1,6 +1,6 @@
 # IntergalaxyTech — Backend API (.NET 8)
 
-API REST construida con **.NET 8**, organizada en **arquitectura por capas** (API / Application / Domain / Infrastructure).
+API REST construida con **.NET 8**, organizada en **arquitectura limpia** (API / Application / Domain / Infrastructure).
 
 ---
 
