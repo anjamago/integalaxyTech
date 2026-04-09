@@ -16,16 +16,16 @@ public class PersonajesController : ControllerBase
     }
 
     [HttpPost("sync")]
-    public async Task<IActionResult> Sync()
+    public async Task<ActionResult<ApiResponse<object>>> Sync()
     {
         await _personajeService.SyncPersonajesAsync();
-        return Ok(new { message = "Sincronización completada." });
+        return Ok(ApiResponse<object>.Ok(null, "Sincronización completada con éxito."));
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<PersonajeDto>>> Get()
+    public async Task<ActionResult<ApiResponse<IEnumerable<PersonajeDto>>>> Get()
     {
         var personajes = await _personajeService.ObtenerTodosAsync();
-        return Ok(personajes);
+        return Ok(ApiResponse<IEnumerable<PersonajeDto>>.Ok(personajes, "Personajes obtenidos correctamente."));
     }
 }

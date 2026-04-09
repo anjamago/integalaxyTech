@@ -1,3 +1,4 @@
+using IntergalaxyTech.Application.DTOs;
 using IntergalaxyTech.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +16,9 @@ public class ReportesController : ControllerBase
     }
 
     [HttpGet("estado")]
-    public async Task<ActionResult<Dictionary<string, int>>> Get()
+    public async Task<ActionResult<ApiResponse<Dictionary<string, int>>>> Get()
     {
         var reporte = await _solicitudService.ObtenerReporteEstadosAsync();
-        return Ok(reporte);
+        return Ok(ApiResponse<Dictionary<string, int>>.Ok(reporte, "Reporte generado correctamente."));
     }
 }

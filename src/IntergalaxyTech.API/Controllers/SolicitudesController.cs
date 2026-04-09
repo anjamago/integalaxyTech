@@ -16,23 +16,24 @@ public class SolicitudesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<SolicitudDto>> Create(CrearSolicitudDto dto)
+    public async Task<ActionResult<ApiResponse<SolicitudDto>>> Create(CrearSolicitudDto dto)
     {
         var solicitud = await _solicitudService.CrearSolicitudAsync(dto);
-        return CreatedAtAction(nameof(Get), new { id = solicitud.Id }, solicitud);
+        var response = ApiResponse<SolicitudDto>.Ok(solicitud, "Solicitud creada correctamente.");
+        return CreatedAtAction(nameof(Get), new { id = solicitud.Id }, response);
     }
 
     [HttpPut("{id:guid}/estado")]
-    public async Task<IActionResult> UpdateStatus(Guid id, ActualizarEstadoSolicitudDto dto)
+    public async Task<ActionResult<ApiResponse<object>>> UpdateStatus(Guid id, ActualizarEstadoSolicitudDto dto)
     {
         await _solicitudService.ActualizarEstadoAsync(id, dto);
-        return NoContent();
+        return Ok(ApiResponse<object>.Ok(null, "Estado actualizado correctamente."));
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<SolicitudDto>>> Get()
+    public async Task<ActionResult<ApiResponse<IEnumerable<SolicitudDto>>>> Get()
     {
         var solicitudes = await _solicitudService.ObtenerTodasAsync();
-        return Ok(solicitudes);
+        return Ok(ApiResponse<IEnumerable<SolicitudDto>>.Ok(solicitudes, "Solicitudes obtenidas correctamente."));
     }
 }

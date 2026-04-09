@@ -1,6 +1,7 @@
 using System.Net;
 using System.Text.Json;
 using FluentValidation;
+using IntergalaxyTech.Application.DTOs;
 
 namespace IntergalaxyTech.API.Middleware;
 
@@ -33,12 +34,14 @@ public class GlobalExceptionMiddleware
         context.Response.ContentType = "application/json";
         var statusCode = HttpStatusCode.InternalServerError;
         var message = "Error interno del servidor.";
+        List<string>? errors = null;
 
         switch (exception)
         {
             case ValidationException validationException:
                 statusCode = HttpStatusCode.BadRequest;
-                message = "Error de validación: " + string.Join("; ", validationException.Errors.Select(e => e.ErrorMessage));
+                message = "Error de validación.";
+                errors = validationException.Errors.Select(e => e.ErrorMessage).ToList();
                 break;
             case ArgumentException argumentException:
                 statusCode = HttpStatusCode.BadRequest;
@@ -55,6 +58,9 @@ public class GlobalExceptionMiddleware
         }
 
         context.Response.StatusCode = (int)statusCode;
-        return context.Response.WriteAsync(JsonSerializer.Serialize(new { error = message }));
+        var responseInfo = ApiResponse<object>.Fail(message, errors);
+        
+        var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+        return context.Response.WriteAsync(JsonSerializer.Serialize(responseInfo, options));
     }
 }

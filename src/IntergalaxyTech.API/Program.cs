@@ -2,6 +2,7 @@ using IntergalaxyTech.Application;
 using IntergalaxyTech.Infrastructure;
 using IntergalaxyTech.Infrastructure.Health;
 using IntergalaxyTech.API.Middleware;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,13 @@ builder.Services.AddHealthChecks()
     .AddCheck<DatabaseHealthCheck>("Database");
 
 var app = builder.Build();
+
+// Aplicar migraciones pendientes automáticamente al iniciar (Code First)
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<IntergalaxyTech.Infrastructure.Data.AppDbContext>();
+    dbContext.Database.Migrate();
+}
 
 if (app.Environment.IsDevelopment())
 {
