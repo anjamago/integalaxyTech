@@ -15,11 +15,11 @@ public class PersonajesController : ControllerBase
         _personajeService = personajeService;
     }
 
-    [HttpPost("sync")]
-    public async Task<ActionResult<ApiResponse<object>>> Sync()
+    [HttpPost("importar")]
+    public async Task<ActionResult<ApiResponse<object>>> Importar()
     {
         await _personajeService.SyncPersonajesAsync();
-        return Ok(ApiResponse<object>.Ok(null, "Sincronización completada con éxito."));
+        return Ok(ApiResponse<object>.Ok(null, "Sincronización de personajes completada con éxito."));
     }
 
     [HttpGet]
@@ -31,5 +31,12 @@ public class PersonajesController : ControllerBase
     {
         var personajes = await _personajeService.ObtenerTodosAsync(nombre, estado, page, pageSize);
         return Ok(ApiResponse<PagedResult<PersonajeDto>>.Ok(personajes, "Personajes obtenidos correctamente."));
+    }
+
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<ApiResponse<PersonajeDto>>> GetById(int id)
+    {
+        var personaje = await _personajeService.ObtenerPorIdAsync(id);
+        return Ok(ApiResponse<PersonajeDto>.Ok(personaje, "Personaje recuperado correctamente."));
     }
 }

@@ -1,7 +1,9 @@
+using FluentValidation;
 using IntergalaxyTech.Application.DTOs;
 using IntergalaxyTech.Application.Interfaces;
 using IntergalaxyTech.Domain.Entities;
 using IntergalaxyTech.Domain.Enums;
+using Microsoft.Extensions.Logging;
 
 namespace IntergalaxyTech.Application.Services;
 
@@ -9,18 +11,31 @@ public class SolicitudService : ISolicitudService
 {
     private readonly ISolicitudRepository _solicitudRepository;
     private readonly IRepository<Personaje> _personajeRepository;
+    private readonly ILogger<SolicitudService> _logger;
+    private readonly IValidator<CrearSolicitudDto> _validator;
 
-    public SolicitudService(ISolicitudRepository solicitudRepository, IRepository<Personaje> personajeRepository)
+    public SolicitudService(
+        ISolicitudRepository solicitudRepository, 
+        IRepository<Personaje> personajeRepository,
+        ILogger<SolicitudService> logger,
+        IValidator<CrearSolicitudDto> validator)
     {
         _solicitudRepository = solicitudRepository;
         _personajeRepository = personajeRepository;
+        _logger = logger;
+        _validator = validator;
     }
 
     public async Task<SolicitudDto> CrearSolicitudAsync(CrearSolicitudDto peticion)
     {
+        await _validator.ValidateAndThrowAsync(peticion);
+
         var personaje = await _personajeRepository.GetByIdAsync(peticion.PersonajeId);
         if (personaje == null)
+        {
+            _logger.LogWarning("Intento de crear solicitud para un personaje no encontrado. ID: {PersonajeId}", peticion.PersonajeId);
             throw new ArgumentException("Personaje no encontrado en la base de datos local.");
+        }
 
         var solicitud = new Solicitud
         {
@@ -68,6 +83,7 @@ public class SolicitudService : ISolicitudService
         solicitud.FechaActualizacion = DateTime.UtcNow;
 
         await _solicitudRepository.UpdateAsync(solicitud);
+        _logger.LogInformation("Solicitud {Id} transicionada a estado {Estado} exitosamente.", id, peticion.Estado);
     }
 
     public async Task<PagedResult<SolicitudDto>> ObtenerTodasAsync(string? estado, string? solicitante, int page, int pageSize)
@@ -85,6 +101,15 @@ public class SolicitudService : ISolicitudService
     public async Task<ReporteSolicitudesDto> ObtenerReporteEstadosAsync()
     {
         return await _solicitudRepository.GetResumenAsync();
+    }
+
+    public async Task<SolicitudDto> ObtenerPorIdAsync(Guid id)
+    {
+        var solicitud = await _solicitudRepository.GetByIdAsync(id);
+        if (solicitud == null)
+            throw new KeyNotFoundException($"La solicitud con ID {id} no fue encontrada.");
+            
+        return ToDto(solicitud);
     }
 
     private static SolicitudDto ToDto(Solicitud solicitud) => new SolicitudDto

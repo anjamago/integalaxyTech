@@ -23,7 +23,7 @@ public class SolicitudesController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = solicitud.Id }, response);
     }
 
-    [HttpPut("{id:guid}/estado")]
+    [HttpPatch("{id:guid}/estado")]
     public async Task<ActionResult<ApiResponse<object>>> UpdateStatus(Guid id, ActualizarEstadoSolicitudDto dto)
     {
         await _solicitudService.ActualizarEstadoAsync(id, dto);
@@ -39,5 +39,12 @@ public class SolicitudesController : ControllerBase
     {
         var solicitudes = await _solicitudService.ObtenerTodasAsync(estado, solicitante, page, pageSize);
         return Ok(ApiResponse<PagedResult<SolicitudDto>>.Ok(solicitudes, "Solicitudes obtenidas de manera paginada."));
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<ActionResult<ApiResponse<SolicitudDto>>> GetById(Guid id)
+    {
+        var solicitud = await _solicitudService.ObtenerPorIdAsync(id);
+        return Ok(ApiResponse<SolicitudDto>.Ok(solicitud, "Solicitud recuperada con éxito."));
     }
 }

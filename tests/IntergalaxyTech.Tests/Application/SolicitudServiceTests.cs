@@ -8,6 +8,8 @@ using IntergalaxyTech.Application.Interfaces;
 using IntergalaxyTech.Application.Services;
 using IntergalaxyTech.Domain.Entities;
 using IntergalaxyTech.Domain.Enums;
+using Microsoft.Extensions.Logging;
+using FluentValidation;
 using Moq;
 using Xunit;
 
@@ -17,14 +19,22 @@ public class SolicitudServiceTests
 {
     private readonly Mock<ISolicitudRepository> _solicitudRepositoryMock;
     private readonly Mock<IRepository<Personaje>> _personajeRepositoryMock;
+    private readonly Mock<ILogger<SolicitudService>> _loggerMock;
+    private readonly Mock<IValidator<CrearSolicitudDto>> _validatorMock;
     private readonly SolicitudService _sut;
 
     public SolicitudServiceTests()
     {
         _solicitudRepositoryMock = new Mock<ISolicitudRepository>();
         _personajeRepositoryMock = new Mock<IRepository<Personaje>>();
+        _loggerMock = new Mock<ILogger<SolicitudService>>();
+        _validatorMock = new Mock<IValidator<CrearSolicitudDto>>();
 
-        _sut = new SolicitudService(_solicitudRepositoryMock.Object, _personajeRepositoryMock.Object);
+        _sut = new SolicitudService(
+            _solicitudRepositoryMock.Object, 
+            _personajeRepositoryMock.Object,
+            _loggerMock.Object,
+            _validatorMock.Object);
     }
 
     [Fact]

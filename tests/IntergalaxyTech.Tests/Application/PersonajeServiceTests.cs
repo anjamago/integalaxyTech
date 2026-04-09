@@ -7,6 +7,7 @@ using IntergalaxyTech.Application.Services;
 using IntergalaxyTech.Domain.Entities;
 using Moq;
 using Xunit;
+using Microsoft.Extensions.Logging;
 
 namespace IntergalaxyTech.Tests.Application;
 
@@ -14,13 +15,15 @@ public class PersonajeServiceTests
 {
     private readonly Mock<IRickAndMortyApiClient> _apiClientMock;
     private readonly Mock<IPersonajeRepository> _personajeRepositoryMock;
+    private readonly Mock<ILogger<PersonajeService>> _loggerMock;
     private readonly PersonajeService _sut;
 
     public PersonajeServiceTests()
     {
         _apiClientMock = new Mock<IRickAndMortyApiClient>();
         _personajeRepositoryMock = new Mock<IPersonajeRepository>();
-        _sut = new PersonajeService(_apiClientMock.Object, _personajeRepositoryMock.Object);
+        _loggerMock = new Mock<ILogger<PersonajeService>>();
+        _sut = new PersonajeService(_apiClientMock.Object, _personajeRepositoryMock.Object, _loggerMock.Object);
     }
 
     [Fact]

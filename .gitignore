@@ -486,3 +486,8 @@ $RECYCLE.BIN/
 # Custom
 doc/
 docs/
+
+# Python Virtual Env and Temp Files
+venv-pdf/
+doc_text.txt
+

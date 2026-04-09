@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/IntergalaxyTech.API.props" />
-</Project>
