@@ -19,8 +19,11 @@ public static class DependencyInjection
                 ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")));
 
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-        services.AddScoped<PersonajeRepository>();
-        services.AddScoped<SolicitudRepository>();
+        services.AddScoped<IPersonajeRepository, PersonajeRepository>();
+        services.AddScoped<IRepository<Domain.Entities.Personaje>>(provider => provider.GetRequiredService<IPersonajeRepository>());
+        
+        services.AddScoped<ISolicitudRepository, SolicitudRepository>();
+        services.AddScoped<IRepository<Domain.Entities.Solicitud>>(provider => provider.GetRequiredService<ISolicitudRepository>());
 
         services.Configure<RickAndMortyApiOptions>(configuration.GetSection(RickAndMortyApiOptions.SectionName));
 

@@ -15,10 +15,10 @@ public class ReportesController : ControllerBase
         _solicitudService = solicitudService;
     }
 
-    [HttpGet("estado")]
-    public async Task<ActionResult<ApiResponse<Dictionary<string, int>>>> Get()
+    [HttpGet("solicitudes-resumen")]
+    public async Task<ActionResult<ApiResponse<ReporteSolicitudesDto>>> GetReporteEstados()
     {
         var reporte = await _solicitudService.ObtenerReporteEstadosAsync();
-        return Ok(ApiResponse<Dictionary<string, int>>.Ok(reporte, "Reporte generado correctamente."));
+        return Ok(ApiResponse<ReporteSolicitudesDto>.Ok(reporte, "Reporte generado exitosamente."));
     }
 }

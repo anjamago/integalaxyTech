@@ -31,9 +31,13 @@ public class SolicitudesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<ApiResponse<IEnumerable<SolicitudDto>>>> Get()
+    public async Task<ActionResult<ApiResponse<PagedResult<SolicitudDto>>>> Get(
+        [FromQuery] string? estado,
+        [FromQuery] string? solicitante,
+        [FromQuery] int page = 1,
+        [FromQuery] int pageSize = 10)
     {
-        var solicitudes = await _solicitudService.ObtenerTodasAsync();
-        return Ok(ApiResponse<IEnumerable<SolicitudDto>>.Ok(solicitudes, "Solicitudes obtenidas correctamente."));
+        var solicitudes = await _solicitudService.ObtenerTodasAsync(estado, solicitante, page, pageSize);
+        return Ok(ApiResponse<PagedResult<SolicitudDto>>.Ok(solicitudes, "Solicitudes obtenidas de manera paginada."));
     }
 }

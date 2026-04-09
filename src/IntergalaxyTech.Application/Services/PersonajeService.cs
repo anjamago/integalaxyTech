@@ -6,9 +6,9 @@ namespace IntergalaxyTech.Application.Services;
 public class PersonajeService : IPersonajeService
 {
     private readonly IRickAndMortyApiClient _apiClient;
-    private readonly IRepository<Domain.Entities.Personaje> _personajeRepository;
+    private readonly IPersonajeRepository _personajeRepository;
 
-    public PersonajeService(IRickAndMortyApiClient apiClient, IRepository<Domain.Entities.Personaje> personajeRepository)
+    public PersonajeService(IRickAndMortyApiClient apiClient, IPersonajeRepository personajeRepository)
     {
         _apiClient = apiClient;
         _personajeRepository = personajeRepository;
@@ -29,17 +29,24 @@ public class PersonajeService : IPersonajeService
         }
     }
 
-    public async Task<IEnumerable<PersonajeDto>> ObtenerTodosAsync()
+    public async Task<PagedResult<PersonajeDto>> ObtenerTodosAsync(string? nombre, string? estado, int page, int pageSize)
     {
-        var personajes = await _personajeRepository.GetAllAsync();
-        return personajes.Select(p => new PersonajeDto
+        var result = await _personajeRepository.GetPagedAsync(nombre, estado, page, pageSize);
+        
+        return new PagedResult<PersonajeDto>
         {
-            Id = p.Id,
-            Nombre = p.Nombre,
-            Especie = p.Especie,
-            Estado = p.Estado,
-            Origen = p.Origen,
-            Imagen = p.Imagen
-        });
+            TotalCount = result.TotalCount,
+            Page = page,
+            PageSize = pageSize,
+            Items = result.Items.Select(p => new PersonajeDto
+            {
+                Id = p.Id,
+                Nombre = p.Nombre,
+                Especie = p.Especie,
+                Estado = p.Estado,
+                Origen = p.Origen,
+                Imagen = p.Imagen
+            })
+        };
     }
 }

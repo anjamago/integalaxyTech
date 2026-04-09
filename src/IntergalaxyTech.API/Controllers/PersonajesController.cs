@@ -23,9 +23,13 @@ public class PersonajesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<ApiResponse<IEnumerable<PersonajeDto>>>> Get()
+    public async Task<ActionResult<ApiResponse<PagedResult<PersonajeDto>>>> Get(
+        [FromQuery] string? nombre, 
+        [FromQuery] string? estado, 
+        [FromQuery] int page = 1, 
+        [FromQuery] int pageSize = 10)
     {
-        var personajes = await _personajeService.ObtenerTodosAsync();
-        return Ok(ApiResponse<IEnumerable<PersonajeDto>>.Ok(personajes, "Personajes obtenidos correctamente."));
+        var personajes = await _personajeService.ObtenerTodosAsync(nombre, estado, page, pageSize);
+        return Ok(ApiResponse<PagedResult<PersonajeDto>>.Ok(personajes, "Personajes obtenidos correctamente."));
     }
 }

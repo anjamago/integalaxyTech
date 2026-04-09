@@ -67,6 +67,9 @@ namespace IntergalaxyTech.Infrastructure.Migrations
                     b.Property<DateTime>("FechaCreacion")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("MotivoRechazo")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("PersonajeId")
                         .HasColumnType("INTEGER");
 

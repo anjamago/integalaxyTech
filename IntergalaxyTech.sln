@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntergalaxyTech.Domain", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntergalaxyTech.Infrastructure", "src\IntergalaxyTech.Infrastructure\IntergalaxyTech.Infrastructure.csproj", "{926A0D6A-741E-4C84-AC86-3D86147F29F8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1E0DD396-194B-499A-A459-511F6373233B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntergalaxyTech.Tests", "tests\IntergalaxyTech.Tests\IntergalaxyTech.Tests.csproj", "{7BCF2E30-442A-4007-9E25-B4A33EEB6975}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,11 +42,16 @@ Global
 		{926A0D6A-741E-4C84-AC86-3D86147F29F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{926A0D6A-741E-4C84-AC86-3D86147F29F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{926A0D6A-741E-4C84-AC86-3D86147F29F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BCF2E30-442A-4007-9E25-B4A33EEB6975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BCF2E30-442A-4007-9E25-B4A33EEB6975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BCF2E30-442A-4007-9E25-B4A33EEB6975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BCF2E30-442A-4007-9E25-B4A33EEB6975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3C9AFBCE-02F4-41A8-84AF-CA84D9168930} = {4390E84C-A96F-47D3-9AB5-AE5917DF99E4}
 		{F0EE998F-14F5-4BCE-839E-79416AC61587} = {4390E84C-A96F-47D3-9AB5-AE5917DF99E4}
 		{7AE99D02-AD77-4DCD-AB3E-51A7C1CA7C7C} = {4390E84C-A96F-47D3-9AB5-AE5917DF99E4}
 		{926A0D6A-741E-4C84-AC86-3D86147F29F8} = {4390E84C-A96F-47D3-9AB5-AE5917DF99E4}
+		{7BCF2E30-442A-4007-9E25-B4A33EEB6975} = {1E0DD396-194B-499A-A459-511F6373233B}
 	EndGlobalSection
 EndGlobal

@@ -19,7 +19,6 @@ builder.Services.AddHealthChecks()
 
 var app = builder.Build();
 
-// Aplicar migraciones pendientes automáticamente al iniciar (Code First)
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<IntergalaxyTech.Infrastructure.Data.AppDbContext>();

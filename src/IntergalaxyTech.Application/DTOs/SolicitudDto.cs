@@ -12,6 +12,7 @@ public class SolicitudDto
     public EstadoSolicitud Estado { get; set; }
     public DateTime FechaCreacion { get; set; }
     public DateTime? FechaActualizacion { get; set; }
+    public string? MotivoRechazo { get; set; }
 }
 
 public class CrearSolicitudDto
@@ -24,4 +25,5 @@ public class CrearSolicitudDto
 public class ActualizarEstadoSolicitudDto
 {
     public EstadoSolicitud Estado { get; set; }
+    public string? MotivoRechazo { get; set; }
 }

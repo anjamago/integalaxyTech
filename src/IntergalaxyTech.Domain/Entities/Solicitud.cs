@@ -12,6 +12,7 @@ public class Solicitud
     public EstadoSolicitud Estado { get; set; } = EstadoSolicitud.Pendiente;
     public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
     public DateTime? FechaActualizacion { get; set; }
+    public string? MotivoRechazo { get; set; }
 
     public Personaje? PersonajeAsignado { get; set; }
 }

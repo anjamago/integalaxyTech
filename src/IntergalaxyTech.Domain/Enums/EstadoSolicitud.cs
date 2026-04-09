@@ -3,7 +3,7 @@ namespace IntergalaxyTech.Domain.Enums;
 public enum EstadoSolicitud
 {
     Pendiente,
-    EnRevision,
+    EnProceso,
     Aprobada,
     Rechazada
 }

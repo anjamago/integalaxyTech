@@ -6,6 +6,6 @@ public interface ISolicitudService
 {
     Task<SolicitudDto> CrearSolicitudAsync(CrearSolicitudDto peticion);
     Task ActualizarEstadoAsync(Guid id, ActualizarEstadoSolicitudDto peticion);
-    Task<IEnumerable<SolicitudDto>> ObtenerTodasAsync();
-    Task<Dictionary<string, int>> ObtenerReporteEstadosAsync();
+    Task<PagedResult<SolicitudDto>> ObtenerTodasAsync(string? estado, string? solicitante, int page, int pageSize);
+    Task<ReporteSolicitudesDto> ObtenerReporteEstadosAsync();
 }

@@ -5,5 +5,5 @@ namespace IntergalaxyTech.Application.Interfaces;
 public interface IPersonajeService
 {
     Task SyncPersonajesAsync();
-    Task<IEnumerable<PersonajeDto>> ObtenerTodosAsync();
+    Task<PagedResult<PersonajeDto>> ObtenerTodosAsync(string? nombre, string? estado, int page, int pageSize);
 }

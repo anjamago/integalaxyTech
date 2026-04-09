@@ -7,10 +7,10 @@ namespace IntergalaxyTech.Application.Services;
 
 public class SolicitudService : ISolicitudService
 {
-    private readonly IRepository<Solicitud> _solicitudRepository;
+    private readonly ISolicitudRepository _solicitudRepository;
     private readonly IRepository<Personaje> _personajeRepository;
 
-    public SolicitudService(IRepository<Solicitud> solicitudRepository, IRepository<Personaje> personajeRepository)
+    public SolicitudService(ISolicitudRepository solicitudRepository, IRepository<Personaje> personajeRepository)
     {
         _solicitudRepository = solicitudRepository;
         _personajeRepository = personajeRepository;
@@ -43,27 +43,48 @@ public class SolicitudService : ISolicitudService
         if (solicitud == null)
             throw new KeyNotFoundException("Solicitud no encontrada.");
 
-        if (solicitud.Estado != EstadoSolicitud.Pendiente)
-            throw new InvalidOperationException("Solo se pueden modificar solicitudes en estado Pendiente.");
+        if (solicitud.Estado == EstadoSolicitud.Pendiente)
+        {
+            if (peticion.Estado != EstadoSolicitud.EnProceso && peticion.Estado != EstadoSolicitud.Rechazada)
+                throw new InvalidOperationException("Solo se permite pasar de Pendiente a EnProceso o Rechazada.");
+        }
+        else if (solicitud.Estado == EstadoSolicitud.EnProceso)
+        {
+            if (peticion.Estado != EstadoSolicitud.Aprobada && peticion.Estado != EstadoSolicitud.Rechazada)
+                throw new InvalidOperationException("Solo se permite pasar de EnProceso a Aprobada o Rechazada.");
+        }
+        else
+        {
+            throw new InvalidOperationException($"No se permite alterar una solicitud en estado {solicitud.Estado}.");
+        }
+
+        if (peticion.Estado == EstadoSolicitud.Rechazada && string.IsNullOrWhiteSpace(peticion.MotivoRechazo))
+        {
+            throw new InvalidOperationException("Se requiere proveer un motivo (MotivoRechazo) para Rechazarlas.");
+        }
 
         solicitud.Estado = peticion.Estado;
+        solicitud.MotivoRechazo = peticion.MotivoRechazo;
         solicitud.FechaActualizacion = DateTime.UtcNow;
 
         await _solicitudRepository.UpdateAsync(solicitud);
     }
 
-    public async Task<IEnumerable<SolicitudDto>> ObtenerTodasAsync()
+    public async Task<PagedResult<SolicitudDto>> ObtenerTodasAsync(string? estado, string? solicitante, int page, int pageSize)
     {
-        var solicitudes = await _solicitudRepository.GetAllAsync();
-        return solicitudes.Select(ToDto);
+        var result = await _solicitudRepository.GetPagedAsync(estado, solicitante, page, pageSize);
+        return new PagedResult<SolicitudDto>
+        {
+            TotalCount = result.TotalCount,
+            Page = page,
+            PageSize = pageSize,
+            Items = result.Items.Select(ToDto)
+        };
     }
 
-    public async Task<Dictionary<string, int>> ObtenerReporteEstadosAsync()
+    public async Task<ReporteSolicitudesDto> ObtenerReporteEstadosAsync()
     {
-        var solicitudes = await _solicitudRepository.GetAllAsync();
-        return solicitudes
-            .GroupBy(s => s.Estado.ToString())
-            .ToDictionary(g => g.Key, g => g.Count());
+        return await _solicitudRepository.GetResumenAsync();
     }
 
     private static SolicitudDto ToDto(Solicitud solicitud) => new SolicitudDto
@@ -74,6 +95,7 @@ public class SolicitudService : ISolicitudService
         AccionRequerida = solicitud.AccionRequerida,
         Estado = solicitud.Estado,
         FechaCreacion = solicitud.FechaCreacion,
-        FechaActualizacion = solicitud.FechaActualizacion
+        FechaActualizacion = solicitud.FechaActualizacion,
+        MotivoRechazo = solicitud.MotivoRechazo
     };
 }
