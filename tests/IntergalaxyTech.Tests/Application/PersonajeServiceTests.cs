@@ -46,7 +46,7 @@ public class PersonajeServiceTests
         _personajeRepositoryMock.Setup(repo => repo.GetAllAsync())
             .ReturnsAsync(existingCharacters);
 
-        await _sut.SyncPersonajesAsync();
+        await _sut.PersonajesAsync();
 
         _personajeRepositoryMock.Verify(repo => repo.AddAsync(It.Is<Personaje>(p => p.Id == 2)), Times.Once);
         _personajeRepositoryMock.Verify(repo => repo.AddAsync(It.Is<Personaje>(p => p.Id == 1)), Times.Never);
